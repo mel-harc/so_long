@@ -23,12 +23,14 @@ typedef struct info
     int     *size_y;
     int     x;
     int     y;
+    int     c_coin;
     int     pxp;
     int     pyp;
     int     pxs;
     int     pys;
+    int     xx;
+    int     yy;
 } t_info;
-
 
 
 
@@ -44,6 +46,9 @@ int     mouvement(int key, t_info *s);
 void    ft_move_L_R(int  key, t_info *s);
 int      ft_exit(t_info *s);
 void    ft_move_up_down(int key, t_info *s);
+int     ft_check_path(char  **nmap);
+void    ft_get_xy(char **nmap, t_info *s);
+void    ft_flood_fill(char  **nmap, int x, int y);
 
 
 #endif
