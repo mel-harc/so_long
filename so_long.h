@@ -11,25 +11,25 @@
 
 typedef struct info
 {
-    void    *mlx_ptr;
-    void    *mlx_win;
-    void    *img_wall;
-    void    *img_dunuts;
-    void    *img_rt;
-    void    *img_player;
-    void    *img_exit;
-    char    **data_2d;
-    int     *size_x;
-    int     *size_y;
-    int     x;
-    int     y;
-    int     c_coin;
-    int     pxp;
-    int     pyp;
-    int     pxs;
-    int     pys;
-    int     xx;
-    int     yy;
+	void    *mlx_ptr;
+	void    *mlx_win;
+	void    *img_wall;
+	void    *img_dunuts;
+	void    *img_rt;
+	void    *img_player;
+	void    *img_exit;
+	char    **data_2d;
+	int     *size_x;
+	int     *size_y;
+	int     x;
+	int     y;
+	int     c_coin;
+	int     pxp;
+	int     pyp;
+	int     pxs;
+	int     pys;
+	int     xx;
+	int     yy;
 } t_info;
 
 

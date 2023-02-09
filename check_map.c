@@ -2,8 +2,8 @@
 
 int    ft_check_map1(char **data_2d, char *data_1d, size_t k)
 {   
-    int a;
-    int b;
+    int a = 0;
+    int b = 0;
 
     while (data_1d[a])
     {
@@ -44,6 +44,7 @@ int     ft_check_map3(char **t, char *d, size_t h)
             E += 1;
         i++;
     }
+    
     if(ft_strlen(t[0]) == h)
     {
         ft_error(5);
@@ -67,7 +68,7 @@ int     ft_check_map2(char **t, size_t i)
             ft_error(3);
             return(1);
         }
-        j++;        
+        j++;
     }
     if (ft_strchr(t[0], '0') || ft_strchr(t[0], 'P') || ft_strchr(t[0], 'C') || ft_strchr(t[0], 'E') || ft_strchr(t[i - 1], '0') ||
         ft_strchr(t[i - 1], 'E') || ft_strchr(t[i - 1], 'C'))

@@ -53,7 +53,7 @@ int     ft_check_path(char  **nmap)
         {
             if (nmap[i][j] == 'C')
             {  
-                ft_error(1);
+                ft_error(5);
                 return(1);
             }
             if (nmap[i][j] == 'E' && nmap[i - 1][j] != 'X' && nmap[i + 1][j] != 'X' && nmap[i][j - 1] != 'X' && nmap[i][j + 1] != 'X')

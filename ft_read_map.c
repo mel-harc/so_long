@@ -22,7 +22,7 @@ void    ft_read_map(int fd)
         count++;
     }
     if (*data_1d == '\0')
-        return(ft_error(2));
+        return(free(data_1d), ft_error(2));
     data_2d = ft_split(data_1d, '\n');
     str_map = ft_split(data_1d, '\n');
     if (ft_check_map1(data_2d, data_1d, count) == 1)
