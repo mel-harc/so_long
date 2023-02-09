@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-harc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/07 10:14:57 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/09 04:23:45 by mel-harc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -5,50 +17,57 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
-# include <mlx.h>
 
 typedef struct info
 {
-	void    *mlx_ptr;
-	void    *mlx_win;
-	void    *img_wall;
-	void    *img_dunuts;
-	void    *img_rt;
-	void    *img_player;
-	void    *img_exit;
-	char    **data_2d;
-	int     *size_x;
-	int     *size_y;
-	int     x;
-	int     y;
-	int     c_coin;
-	int     pxp;
-	int     pyp;
-	int     pxs;
-	int     pys;
-	int     xx;
-	int     yy;
-} t_info;
+	char	**map_2d;
+	char	*map_1d;
+	char	**f_map;
+	int		count;
+	int		px;
+	int		py;
+	void	*mlx_ptr;
+	void	*mlx_win;
+	int		*a;
+	int		*b;
+	int		pxp;
+	int		pyp;
+	void	*wall;
+	void	*img_c;
+	void	*img_r;
+	void	*img_p;
+	void	*img_e;
+	int		x;
+	int		y;
+	char	*str_w;
+	char	*str_r;
+	char	*str_e;
+	char	*str_c;
+	char	*str_p;
+	int		coin;
+}	t_info;
 
-
-
-void    ft_error(int i);
-void    ft_read_map(int fd);
-int    ft_check_map1(char **data_2d, char *data_1d, size_t i);
-int    ft_check_map2(char **t, size_t k);
-int     ft_check_map3(char **t, char *d, size_t h);
-void    open_window(int lienght, int wiedth, char **data_2d);
-void    darwing(t_info *s); 
-void    ft_batch(char b, t_info *s);
-int     mouvement(int key, t_info *s);
-void    ft_move_L_R(int  key, t_info *s);
-int      ft_exit(t_info *s);
-void    ft_move_up_down(int key, t_info *s);
-int     ft_check_path(char  **nmap);
-void    ft_get_xy(char **nmap, t_info *s);
-void    ft_flood_fill(char  **nmap, int x, int y);
-
+char	**ft_read_map(t_info *v, int fd);
+void	ft_error(int i);
+int		ft_check_map1(char **map_2d, char *map_1d, size_t k);
+int		ft_check_map2(char	**t, size_t k);
+int		ft_check_map3(char *g, size_t k);
+int		ft_check_path(t_info *s);
+void	ft_get_xy(char **nmap, t_info *s);
+void	ft_flood_fill(char **nmap, int x, int y);
+int		ft_tracing(char **nmap);
+int		ft_check_ext(char *str);
+int		ft_check_ext(char *str);
+void	open_window(int x, int y, t_info *s);
+void	ft_position(t_info *s);
+void	ft_draw(t_info *s);
+void	ft_mouve_lr(int key, t_info *s);
+void	ft_mouve_up_down(int key, t_info *s);
+int		mouve(int key, t_info *s);
+int		ft_exit(t_info *s);
+void	ft_img(char b, t_info *s);
 
 #endif

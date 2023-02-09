@@ -1,70 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mel-harc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/07 22:08:50 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/08 18:11:40 by mel-harc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-void    ft_flood_fill(char  **nmap, int x, int y)
+
+void	ft_get_xy(char	**nmap, t_info *s)
 {
-    if (nmap[x][y] == '1' || nmap[x][y] == 'E' || nmap[x][y] == 'X' )
-        return;
-    if (nmap[x][y] != 'P')
-        nmap[x][y] = 'X';
-    ft_flood_fill(nmap, x, y + 1);
-    ft_flood_fill(nmap, x, y - 1);
-    ft_flood_fill(nmap, x - 1, y);
-    ft_flood_fill(nmap, x + 1, y);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (nmap[i])
+	{
+		j = 0;
+		while (nmap[i][j])
+		{
+			if (nmap[i][j] == 'P')
+			{
+				s->px = i;
+				s->py = j;
+				break ;
+			}
+			else
+				j++;
+		}
+		i++;
+	}
 }
 
-void    ft_get_xy(char **nmap, t_info *s)
+void	ft_flood_fill(char	**nmap, int x, int y)
 {
-    int i;
-    int j;
-
-    i = 0;
-    while (nmap[i])
-    {
-        j = 0;
-        while (nmap[i][j])
-        {
-            if (nmap[i][j] == 'P')
-            {
-                s->xx = i;
-                s->yy = j;
-                break;
-            }
-            else
-                j++;
-        }
-        i++;
-    }
+	if (nmap[x][y] == '1' || nmap[x][y] == 'E' || nmap[x][y] == 'X')
+		return ;
+	if (nmap[x][y] != 'P')
+		nmap[x][y] = 'X';
+	ft_flood_fill(nmap, x, y + 1);
+	ft_flood_fill(nmap, x, y - 1);
+	ft_flood_fill(nmap, x - 1, y);
+	ft_flood_fill(nmap, x + 1, y);
 }
 
-int     ft_check_path(char  **nmap)
+int	ft_check_path(t_info *v)
 {
-    int     i;
-    int     j;
-    t_info  s;
+	char	**nmap;
+	int		i;
 
-    i = 0;
-    s.xx = 0;
-    s.yy = 0;
-    ft_get_xy(nmap, &s);
-    ft_flood_fill(nmap, s.xx, s.yy);
-    while (nmap[i])
-    {
-        j = 0;
-        while (nmap[i][j])
-        {
-            if (nmap[i][j] == 'C')
-            {  
-                ft_error(5);
-                return(1);
-            }
-            if (nmap[i][j] == 'E' && nmap[i - 1][j] != 'X' && nmap[i + 1][j] != 'X' && nmap[i][j - 1] != 'X' && nmap[i][j + 1] != 'X')
-            {
-                ft_error(1);
-                return(1);
-            }
-            j++;
-        }
-        i++;
-    }
-    return(0);
-    
+	v->px = 0;
+	v->py = 0;
+	i = -1;
+	nmap = ft_split(v->map_1d, '\n');
+	ft_get_xy(nmap, v);
+	ft_flood_fill(nmap, v->px, v->py);
+	if (ft_tracing(nmap) == 1)
+		return (1);
+	while (nmap[++i])
+		free(nmap[i]);
+	free(nmap);
+	return (0);
+}
+
+int	ft_tracing(char **nmap)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (nmap[++i])
+	{
+		j = 0;
+		while (nmap[i][j])
+		{
+			if (nmap[i][j] == 'C')
+			{
+				ft_error(7);
+				return (1);
+			}
+			if (nmap[i][j] == 'E' && nmap[i - 1][j] != 'X' \
+				&& nmap[i + 1][j] != 'X' && nmap[i][j - 1] != 'X' \
+				&& nmap[i][j + 1] != 'X')
+			{
+				ft_error(7);
+				return (1);
+			}
+			j++;
+		}
+	}
+	return (0);
 }
