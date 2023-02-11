@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_window.c                                      :+:      :+:    :+:   */
+/*   open_window_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 01:21:46 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/10 23:39:32 by mel-harc         ###   ########.fr       */
+/*   Created: 2023/02/11 00:37:14 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/11 16:51:18 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	open_window(int x, int y, t_info *s)
 {
@@ -25,10 +25,11 @@ void	open_window(int x, int y, t_info *s)
 	s->pyp = 0;
 	s->mv = 0;
 	s->str_c = "img/dunut.xpm";
-	s->str_e = "img/exit.xpm";
+	s->str_e = "img/exit1.xpm";
 	s->str_p = "img/player.xpm";
 	s->str_r = "img/paground.xpm";
 	s->str_w = "img/wall_.xpm";
+	s->str_n = "img/enemy.xpm";
 	s->mlx_ptr = mlx_init();
 	s->mlx_win = mlx_new_window(s->mlx_ptr, x, y, "so_long");
 	ft_draw(s);

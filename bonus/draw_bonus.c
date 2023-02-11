@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-harc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 03:09:14 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/09 04:17:56 by mel-harc         ###   ########.fr       */
+/*   Created: 2023/02/11 00:08:47 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/11 16:50:26 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_img2(char b, t_info *s)
 {
@@ -27,6 +27,13 @@ void	ft_img2(char b, t_info *s)
 		if (!s->img_c)
 			ft_error(9);
 		mlx_put_image_to_window(s->mlx_ptr, s->mlx_win, s->img_c, s->x, s->y);
+	}
+	if (b == 'N')
+	{
+		s->img_n = mlx_xpm_file_to_image(s->mlx_ptr, s->str_n, s->a, s->b);
+		if (!s->img_n)
+			ft_error(9);
+		mlx_put_image_to_window(s->mlx_ptr, s->mlx_win, s->img_n, s->x, s->y);
 	}
 }
 
@@ -53,7 +60,7 @@ void	ft_img(char b, t_info *s)
 			ft_error(9);
 		mlx_put_image_to_window(s->mlx_ptr, s->mlx_win, s->img_p, s->x, s->y);
 	}
-	if (b == 'E' || b == 'C')
+	if (b == 'E' || b == 'C' || b == 'N')
 		ft_img2(b, s);
 }
 
@@ -84,4 +91,4 @@ void	ft_draw(t_info *s)
 		}
 	}
 	return ;
-}	
+}

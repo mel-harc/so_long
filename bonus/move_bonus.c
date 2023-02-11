@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-harc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 01:58:33 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/09 23:35:35 by mel-harc         ###   ########.fr       */
+/*   Created: 2023/02/11 00:11:33 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/11 18:33:06 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_mouve_lr(int key, t_info *s)
-{	
+{
+	if (key == 123 && s->map_2d[s->pxp][s->pyp - 1] == 'N')
+		ft_exit(s);
 	if (key == 123 && s->map_2d[s->pxp][s->pyp - 1] == 'E' && s->coin == 0)
 		ft_exit(s);
 	if (key == 123 && s->map_2d[s->pxp][s->pyp - 1] != '1'\
@@ -24,6 +26,8 @@ void	ft_mouve_lr(int key, t_info *s)
 		s->mv++;
 		ft_draw(s);
 	}
+	if (key == 124 && s->map_2d[s->pxp][s->pyp + 1] == 'N')
+		ft_exit(s);
 	if (key == 124 && s->map_2d[s->pxp][s->pyp + 1] == 'E' && s->coin == 0)
 		ft_exit(0);
 	if (key == 124 && s->map_2d[s->pxp][s->pyp + 1] != '1'\
@@ -38,6 +42,8 @@ void	ft_mouve_lr(int key, t_info *s)
 
 void	ft_mouve_up_down(int key, t_info *s)
 {
+	if (key == 126 && s->map_2d[s->pxp - 1][s->pyp] == 'N')
+		ft_exit(s);
 	if (key == 126 && s->map_2d[s->pxp - 1][s->pyp] == 'E' && s->coin == 0)
 		ft_exit(s);
 	if (key == 126 && s->map_2d[s->pxp - 1][s->pyp] != '1'\
@@ -48,6 +54,8 @@ void	ft_mouve_up_down(int key, t_info *s)
 		s->mv++;
 		ft_draw(s);
 	}
+	if (key == 125 && s->map_2d[s->pxp + 1][s->pyp] == 'N')
+		ft_exit(s);
 	if (key == 125 && s->map_2d[s->pxp + 1][s->pyp] == 'E' && s->coin == 0)
 		ft_exit(s);
 	if (key == 125 && s->map_2d[s->pxp + 1][s->pyp] != '1'\
@@ -76,9 +84,8 @@ int	mouve(int key, t_info *s)
 		ft_mouve_lr(key, s);
 	else if (key == 125 || key == 126)
 		ft_mouve_up_down(key, s);
-	ft_putstr_fd("moves egual : ", 1);
-	ft_putnbr_fd(s->mv, 1);
-	write(1, "\n", 1);
+	mlx_string_put(s->mlx_ptr, s->mlx_win, 70, 10, 0x0000FF00, "MOVES EGAUL :");
+	mlx_string_put(s->mlx_ptr, s->mlx_win, 250, 10, 0x0000FF00, ft_itoa(s->mv));
 	return (0);
 }
 

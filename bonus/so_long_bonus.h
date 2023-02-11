@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 21:47:33 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/11 00:18:45 by mel-harc         ###   ########.fr       */
+/*   Created: 2023/02/10 23:56:13 by mel-harc          #+#    #+#             */
+/*   Updated: 2023/02/11 01:07:46 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include "gnl/get_next_line.h"
-# include "libft/libft.h"
+# include "../gnl/get_next_line.h"
+# include "../libft/libft.h"
 
 typedef struct info
 {
@@ -40,6 +40,7 @@ typedef struct info
 	void	*img_r;
 	void	*img_p;
 	void	*img_e;
+	void	*img_n;
 	int		x;
 	int		y;
 	char	*str_w;
@@ -47,6 +48,7 @@ typedef struct info
 	char	*str_e;
 	char	*str_c;
 	char	*str_p;
+	char	*str_n;
 	int		coin;
 	int		mv;
 }	t_info;
@@ -72,4 +74,5 @@ int		ft_exit(t_info *s);
 void	ft_img(char b, t_info *s);
 void	ft_img2(char b, t_info *s);
 void	ft_erro(int i);
+
 #endif
