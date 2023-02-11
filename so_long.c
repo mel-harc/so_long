@@ -6,7 +6,7 @@
 /*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:10:58 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/11 18:42:07 by mel-harc         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:35:29 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 		exit(1);
 	if (ft_check_map1(s.map_2d, s.map_1d, s.count) == 1 \
 		|| ft_check_path(&s) == 1)
-		return (0);
+		exit(1);
 	open_window(ft_strlen(s.map_2d[0]) * 50, s.count * 50, &s);
 	return (0);
 }

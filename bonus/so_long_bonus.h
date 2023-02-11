@@ -6,7 +6,7 @@
 /*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 23:56:13 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/11 01:07:46 by mel-harc         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:56:26 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct info
 	char	*str_n;
 	int		coin;
 	int		mv;
+	char	*str;
 }	t_info;
 
 char	**ft_read_map(t_info *v, int fd);

@@ -6,7 +6,7 @@
 /*   By: mel-harc <mel-harc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 00:14:42 by mel-harc          #+#    #+#             */
-/*   Updated: 2023/02/11 16:43:07 by mel-harc         ###   ########.fr       */
+/*   Updated: 2023/02/11 23:08:25 by mel-harc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_error(int i)
 {
+	write(1, "Error\n", 6);
 	if (i == 1)
 		write(1, "this map is not comlety close\n", 30);
 	if (i == 2)
