@@ -96,7 +96,7 @@ To get started with So_Long, follow these steps:
 
 ## 1. Clone the repository:
    ```bash
-   $ git clone https://github.com/yourusername/so_long.git
+   $ git clone git@github.com:mel-harc/so_long.git
    $ cd so_long
    ```
 
